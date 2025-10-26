@@ -1,5 +1,5 @@
 import React from "react";
-import { Leaf, Phone, Mail, Globe } from "lucide-react";
+import { Leaf, Phone, Globe } from "lucide-react";
 
 const copy = {
   en: {
@@ -10,7 +10,6 @@ const copy = {
     videos: "Videos",
     about: "About Us",
     contact: "Contact",
-    app: "App Download",
   },
   hi: {
     encyclopedia: "विश्वकोश",
@@ -20,19 +19,23 @@ const copy = {
     videos: "वीडियो",
     about: "हमारे बारे में",
     contact: "संपर्क",
-    app: "ऐप डाउनलोड",
   },
 };
 
-export default function Navbar({ lang, setLang }) {
+export default function Navbar({ lang, setLang, logo }) {
   const t = copy[lang];
-
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
-        <a href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#1E5631] text-white">
-            <Leaf className="h-5 w-5" />
+        <a href="/" className="flex items-center gap-3">
+          <div className="relative h-10 w-10 overflow-hidden rounded-md ring-1 ring-[#1E5631]/20">
+            {logo ? (
+              <img src={logo} alt="The Kisan Lab Logo" className="h-full w-full object-cover" />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center rounded-md bg-[#1E5631] text-white">
+                <Leaf className="h-5 w-5" />
+              </div>
+            )}
           </div>
           <div className="leading-tight">
             <div className="font-semibold tracking-tight">The Kisan Lab™</div>
@@ -83,10 +86,7 @@ export default function Navbar({ lang, setLang }) {
             <span className="opacity-50">•</span>
             <a href="#mandi">{t.mandiRates}</a>
           </div>
-          <a href="mailto:farmers@thekisanlab.com" className="flex items-center gap-1">
-            <Mail className="h-4 w-4" />
-            <span>farmers@thekisanlab.com</span>
-          </a>
+          <span>thekisanlab.in</span>
         </div>
       </div>
     </header>
